@@ -1,0 +1,122 @@
+<head>
+	<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+	<script src="scripts.js" type="text/javascript"></script>
+	<script src="debounce.min.js" type="text/javascript"></script>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css" type="text/css">
+</head>
+
+<body>
+
+	<img id="cursor" src="/img/cursor.png">
+	<div class="container">
+		<div class="balance">
+		</div>
+		<div class="transaction">
+		</div>
+	</div>
+	<div class="full-screen">
+		<div class="gouv-container">
+			<div class="header">
+				<img src="/img/GOUV.png" class="logo">
+				<div class="header-right">
+					<h3 class="sans">Valtion hallinta</h3>
+				</div>
+			</div>
+			<div class="body home">
+				<div class="centered">
+				    <a href="#" class="button sans btnImpot">Verotus</a>
+					<a href="#" class="button sans btnEntreprise">Yritys hallinta</a>
+					<a href="#" class="button sans btnClose">Sulje</a>
+				</div>
+			</div>
+			<div class="body impot-container">
+				<div class="centered">
+				    <a href="#" class="button sans btnI1">Verotuksen lista</a>
+					<a href="#" class="button sans btnI2">Lisää verotus</a>
+					<a href="#" class="button sans btnI3">Poista verotus</a>
+				</div>
+				<div class="centered">
+						<a href="#" class="button sans btnHome">Kotivalikko</a>
+						<a href="#" class="button sans btnClose">Sulje</a>
+				</div>
+			</div>
+			<div class="body btnI1-container">
+				<div class="centered">
+					<h3 class="sans"><div id="btnI1-data"></div></h3>
+				</div>
+				<div class="centered">
+						<a href="#" class="button sans btnHome">Kotivalikko</a>
+						<a href="#" class="button sans btnClose">Sulje</a>
+				</div>
+			</div>
+			<div class="body btnI2-container">
+				<div class="form">
+					<form id="btnI2-form">	
+						<h4 class="sans">Laatu: 1 Kaupoille / 2 vero</h4><br>
+						<input id="type" type="text" placeholder="Type de taxe" class="sans" required/><br>
+						<input id="nom" type="text" placeholder="Nom de la taxe" class="sans" required/><br>
+						<input id="montant" type="text" placeholder="Pourcentage de la taxe" class="sans" required/><br>
+						<button type="submit" id="submit" class="submit sans">Lisää vero</button>
+					</form>
+				</div>
+				<div class="centered">
+						<a href="#" class="button sans btnHome">Kotivalikko</a>
+						<a href="#" class="button sans btnClose">Sulje</a>
+				</div>
+			</div>
+			<div class="body btnI3-container">
+				<div class="form">
+					<form id="btnI3-form">	
+						<input id="idimp" type="text" placeholder="ID de la taxe" class="sans" required/><br>
+						<button type="submit" id="submit" class="submit sans">Poista vero</button>
+					</form>
+				</div>
+				<div class="centered">
+						<a href="#" class="button sans btnHome">Kotivalikko</a>
+						<a href="#" class="button sans btnClose">Sulje</a>
+				</div>
+			</div>
+			<div class="body btnI4-container">
+				<div class="centered">
+				    <a href="#" class="button sans"><div id="btnI4-data"></div></a>
+				</div>
+				<div class="centered">
+						<a href="#" class="button sans btnHome">Kotivalikko</a>
+						<a href="#" class="button sans btnClose">Sulje</a>
+				</div>
+			</div>
+			<div class="body ent-container">
+				<div class="centered">
+				    <a href="#" class="button sans btnE1">Yritys lista</a></br>
+					<a href="#" class="button sans btnE3">Estä / Poista esto yritykseltä</a></br>
+				</div>
+				<div class="centered">
+						<a href="#" class="button sans btnHome">Kotivalikko</a>
+						<a href="#" class="button sans btnClose">Sulje</a>
+				</div>
+			</div>
+			<div class="body btnE1-container">
+				<div class="centered">
+				    <a href="#" class="button sans"><div id="btnE1-data"></div></a>
+				</div>
+				<div class="centered">
+						<a href="#" class="button sans btnHome">Kotivalikko</a>
+						<a href="#" class="button sans btnClose">Sulje</a>
+				</div>
+			</div>
+			<div class="body btnE3-container">
+				<div class="form">
+					<form id="btnE3-form">	
+						<input id="nom" type="text" placeholder="Nom de l'entreprise" class="sans" required/><br>
+						<button type="submit" id="submit" class="submit sans">Estä / Poista esto yritykseltä</button>
+					</form>
+				</div>
+				<div class="centered">
+						<a href="#" class="button sans btnHome">Kotivalikko</a>
+						<a href="#" class="button sans btnClose">Sulje</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

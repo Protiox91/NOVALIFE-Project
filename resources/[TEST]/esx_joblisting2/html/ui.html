@@ -1,0 +1,136 @@
+<style>
+
+	.app {
+		display: none;
+		background-image: url('img/tablet.png');
+		background-size: 100%;
+
+		position:absolute;
+		left:0; right:0;
+		top:0; bottom:0;
+		margin: auto;
+	
+		height: 843px;
+		width: 566px;
+		overflow: hidden;
+	
+	}
+	
+	#screen {
+	
+		position:absolute;
+		left:0; right:0;
+		top:11; bottom:0;
+		margin: auto;
+	
+		height: 685px;
+		width: 425px;
+		overflow:auto;
+	}
+	
+	#banner {
+		background-image: url('img/header.png');
+		background-color: red;
+		height: 132px;
+	}
+	
+	body {
+		
+		height: 100%;
+	}
+	
+	textarea {
+		
+		width: 100%;
+		
+	}
+	
+	.editor {
+		
+		width: 100%;
+		
+	}
+	
+	
+	</style>
+	
+	<head>
+		<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+		<script src="scripts.js" type="text/javascript"></script>
+		<script src="debounce.min.js" type="text/javascript"></script>
+		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="styles.css" type="text/css">
+	</head>
+	
+	<body>
+		<div class = "app">
+		
+				
+				<div class = "w3-w" id = "screen">
+				
+					<div class = "w3-container" id = "banner">
+					</div>
+					
+					<div class = "editor w3-container w3-white">
+
+						<br>
+						<div class "radiolife w3-white">
+							<b>Entreprises :</b><br>
+							<input id = "police" type="radio" name="type" value="police" checked> Police <br>
+							<input id = "ambulance" type="radio" name="type" value="ambulance" checked> Ambulance <br>
+							<input id = "unicorn" type="radio" name="type" value="unicorn" checked> Unicorn (Entreprise fermée) <br>
+							<input id = "cardealer" type="radio" name="type" value="cardealer" checked> Concessionaire <br>
+							<input id = "mechanic" type="radio" name="type" value="mechanic" checked> Mecano <br>
+							<input id = "realestate" type="radio" name="type" value="realestate" checked> Agent Immobillier (Entreprise fermée) <br>
+							<input id = "taxi" type="radio" name="type" value="taxi" checked> Taxi <br>
+							<input id = "bus" type="radio" name="type" value="bus" checked> Bus&Co (Entreprise fermée) <br>
+							<input id = "armurier" type="radio" name="type" value="armurier" checked> GunShop (Entreprise fermée) <br>
+							<input id = "bahama" type="radio" name="type" value="bahama" checked> Bahama-Mas (Entreprise fermée) <br>
+							<input id = "bank" type="radio" name="type" value="bank" checked> Banque (Entreprise fermée) <br>
+							<input id = "casino" type="radio" name="type" value="casino" checked> Casino (Entreprise fermée) <br>
+							<input id = "epi" type="radio" name="type" value="epi" checked> Epicerie (Entreprise fermée) <br>
+							<input id = "avocat" type="radio" name="type" value="avocat" checked> Avocat (Entreprise fermée) <br>
+							<input id = "prison" type="radio" name="type" value="prison" checked> Prison Fédérale (Entreprise fermée) <br>
+							<input id = "oasis" type="radio" name="type" value="oasis" checked> Oasis Resto (Entreprise fermée) <br>
+							<input id = "tabac" type="radio" name="type" value="tabac" checked> Redwood Tabac (Entreprise fermée) <br>
+							<input id = "vigne" type="radio" name="type" value="vigne" checked> Vignerons (Entreprise fermée) <br>
+							<br>
+						</div>
+						
+						<b>PRÉSENTATION</b>
+						<textarea class = "pres w3-white" rows="20" placeholder="(Nom/Prénom/age) | D'où venez-vous? Depuis combien de temps êtes-vous en ville? Vos défauts et vos qualités?"></textarea>
+						<br>
+						<br>
+
+						<b>MOYENS DE CONTACT</b>
+						<textarea class = "phone w3-white" rows="3" placeholder="Votre numéro de Téléphone: #452               Votre boite mail: @jordan Binks@discord.gg"></textarea>
+						<br>
+						<br>
+						
+						<b>PERMIS</b>
+						<textarea class = "licenses w3-white" rows="4" placeholder="Exemple: Voiture,Moto,Camion,depuis 1 ans"></textarea>
+						<br>
+						<br>
+						
+						<b>MOTIVATIONS</b>
+						<textarea class = "moti w3-white" rows="20" placeholder="Dites nous ce qui vous motives le plus dans l'entreprise et dans le travail en général !"></textarea>
+						<br>
+						<br>
+
+						<b>EXPÉRIENCES</b>
+						<textarea class = "exp w3-white" rows="20" placeholder="Quelle poste voulez-vous occuper dans l'entreprise, vos disponibilités, pourquoi vous et pas un autre ?"></textarea>
+						<br>
+						<br>
+					
+
+						<b>Vos informations personnelles sont sauvegardées dans nos archives, si vous dites des mensonges dans la candidature un procès pourrait être envisagé à votre encontre !</b><br>
+						<br>
+						
+						<button class="w3-button w3-green w3-left btnSend">Envoyer la Candidature</button>
+						<button class="w3-button w3-red w3-left btnClose">Annuler la Candidature</button>
+						
+					</div>
+					
+					
+				</div></div>	
+	</body>

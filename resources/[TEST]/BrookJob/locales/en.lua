@@ -1,0 +1,33 @@
+Locales['en'] = {
+	['cloakroom']				= 'Vestiaire',
+	['job_wear']				= 'Tenue de Travail',
+	['citizen_wear']			= 'Vos Habits',
+	['vehiclespawner']			= 'Vehicules de fonction', 
+	['already_have_truck']		= 'Vous avez déjà un véhicule !', 
+	['delivery']				= 'Appuie sur ~INPUT_PICKUP~ pour commencer votre boulot.',
+	['not_your_truck']			= 'Ce n\'est pas ton camion !',
+	['not_your_truck2']			= 'Tu dois être dans ton camion !',
+	['need_it']					= 'On en a besoin !',
+	['ok_work']					= 'Travaile alors !',
+	['scared_me']				= 'Tu m\'as fais peur !',
+	['resume_delivery']			= 'ok, resume your delivery then !',
+	['not_delivery']			= 'Pas de travail, pas d\'argent !',
+	['pay_repair']				= 'Tu dois payer les réparations !',
+	['repair_minus']			= 'Réparations : - ',
+	['shipments_plus']			= 'Livraisons : + ',
+	['truck_state']				= 'Pas d\'argent, t\'as vus l\'état du camion !',
+	['no_delivery_no_truck']  	= 'Pas de livraison, pas de camoin ? Bizarre ....',
+	['truck_price']				= 'Prix du Camion : -',
+	['meet_ls']					= 'Allez au nouveau point de rendez-vous',
+	['meet_bc']					= 'Allez au nouveau point de rendez-vous',
+	['meet_del']				= 'Allez au nouveau point de rendez-vous',
+	['return_depot']			= 'Retour au dépôt',
+	['blip_job']				= 'Nova Logistics', --'Garbage company',
+	['blip_delivery']			= 'Nova Logistics : Point', --'Garbage company : Delivery',
+	['blip_goal']				= 'Nova Logistics : Point de livraison', --'Garbage company : Delivery point',
+	['blip_depot']				= 'Nova Logistics : Dépôt', --'Garbage company : depot',
+	['cancel_mission']			= 'Appuie sur ~INPUT_PICKUP~ pour finir votre service',
+}
+
+
+

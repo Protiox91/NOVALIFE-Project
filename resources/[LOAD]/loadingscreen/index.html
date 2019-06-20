@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/keks.css">
+    </head>
+
+    <body>
+
+        <div id="particle"></div>
+
+      <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script src="config.js"></script>
+
+        <h2 id="logo" style="color: rgb(59, 137, 255)"><strong style="color: rgb(59, 137, 255)"></strong></h2>
+		<h2 id="logo2" style="color: rgb(59, 137, 255)"><strong style="color: #FFF"></strong></h2>
+        <!-- To get the servername centered, please navigate to keks.css -> #logo -> margin-left: ***; -->
+		
+	    <audio autoplay="" id="Loading" loop=""><source src="music/Loading.ogg" type="audio/ogg" />
+        <source src="music/Loading.ogg" type="audio/ogg">
+        </audio>
+        <script>
+        var vid = document.getElementById("Loading");
+        vid.volume = 0.2
+        </script>
+
+        <div class="spinner-block">
+          <div class="spinner spinner-1"></div>
+        </div>
+	
+		
+		<div class="music">
+            <a id="musicText" class="musicTextBack">Instru-TypeDamso</a>
+            <p class="musicIcon" style="background-color: 3B89FF; border: 0; outline: 0; border-top-left-radius: 10px; border-bottom-left-radius: 10px;"></p>
+            <img class="musicPictureReal" src="https://cdn.discordapp.com/attachments/347428848650027018/567636868364238848/music.png">
+        </div>
+
+        <div class="discord">
+            <a id="discordText" class="discordTextBack">discord.gg/MTRqSdM</a>
+            <p class="discordIcon" style="background-color: 3B89FF; border: 0; outline: 0; border-top-left-radius: 10px; border-bottom-left-radius: 10px;"></p>
+            <img class="discordPictureReal" src="https://thesilphroad.com/img/icons/discord.png">
+        </div>
+
+        <div class="website">
+            <a id="websiteText" class="websiteTextBack">188.40.185.205</a>
+            <p class="websiteIcon" style="background-color: 3B89FF; border: 0; outline: 0; border-top-left-radius: 10px; border-bottom-left-radius: 10px;"></p>
+            <img class="websitePictureReal" src="http://chichesternursery.org/wp-content/uploads/2015/09/Earth_grid_select_language_button_256.png">
+        </div>
+
+        <img style="
+        width: 100%;
+        height: 100%; 
+        background-image: url(https://cdn.discordapp.com/attachments/580059380716666902/586276839484555286/Sans_titre-1.jpg);
+        filter:brightness(80%); 
+        z-index: 9;">
+        
+        <script type="text/javascript">
+function play()
+{
+var a = Math.random()*5;
+a=Math.floor(a);
+
+if(a==4)
+{
+document.getElementById('soundtrack').innerHTML="<audio id='background_audio1' loop autoplay><source src='music/music5.ogg' type='audio/ogg'></audio>";
+}
+if(a==3)
+{
+document.getElementById('soundtrack').innerHTML="<audio id='background_audio1' loop autoplay><source src='music/music4.ogg' type='audio/ogg'></audio>";
+}
+if(a==2)
+{
+document.getElementById('soundtrack').innerHTML="<audio id='background_audio1' loop autoplay><source src='music/music3.ogg' type='audio/ogg'></audio>";
+}
+
+if(a==1)
+{
+document.getElementById('soundtrack').innerHTML="<audio id='background_audio1' loop autoplay><source src='music/music2.ogg' type='audio/ogg'></audio>";
+}
+if(a==0)
+{
+document.getElementById('soundtrack').innerHTML="<audio id='background_audio1' loop autoplay><source src='music/music1.ogg' type='audio/ogg'></audio>";
+}
+}
+</script>
+
+    </head>
+    <body onload="play()">
+    <div id="soundtrack">
+
+    </div>
+    </body>
+</html>

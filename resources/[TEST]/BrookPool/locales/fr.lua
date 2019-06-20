@@ -1,0 +1,16 @@
+Locales ['fr'] = {
+	['GPS_info'] = 'Votre patron vous a envoyé vers cette nouvelle localisation. Regardez votre ~ y ~ GPS',
+	['cancel_mission'] = 'Vous avez annulé la mission',
+	['pickup'] = '~ INPUT_CONTEXT ~ pour laver la piscine',
+	['end_service'] = 'Finir votre service',
+	['take_service'] = 'Prendre votre service',
+	['end_service_notif'] = 'Fin ~ r ~ de Service',
+	['take_service_notif'] = 'Prendre ~ g ~ de Service',
+	['start_job'] = 'Utilise ~ b ~ SUPPR ~ w ~ pour ~ b ~ commencer',
+	['Vehicle_Menu_Title'] = 'Véhicule de Service',
+	['in_vehicle'] = '~ r ~ Sors de la voiture !',
+	['vehicle_broken'] = '~ r ~ Repare le véhicule avant !',
+	['bad_vehicle'] = 'Vous pouvez seulement déposer ~ ​​b ~ votre véhicule de service',
+	['not_good_veh'] = '~ r ~ Tu dois être dans ton véhicule de service',
+	['stop_npc'] = 'Action ~ r ~ impossible ~ s ~: Retourne au dépôt !',
+}
