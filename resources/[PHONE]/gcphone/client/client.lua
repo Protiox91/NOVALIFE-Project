@@ -638,6 +638,99 @@ RegisterNUICallback('setGPS', function(data, cb)
   cb()
 end)
 
+RegisterNUICallback('callEvent', function(data, cb)
+  local plyPos = GetEntityCoords(GetPlayerPed(-1), true)
+  if data.eventName ~= 'cancel' then
+    if data.data ~= nil then 
+      --TriggerServerEvent("call:makeCall", "police", {x=plyPos.x,y=plyPos.y,z=plyPos.z},ResultMotifAdd,GetPlayerServerId(player))
+      TriggerServerEvent("call:makeCall", data.eventName, {x=plyPos.x,y=plyPos.y,z=plyPos.z}, data.data, GetPlayerServerId(player))
+      if data.eventName == "police" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé la ~b~Police")
+      elseif data.eventName == "taxi" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Taxi")
+      elseif data.eventName == "mecano" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Mécano")
+      elseif data.eventName == "journaliste" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Journaliste")
+      elseif data.eventName == "ambulance" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Ambulancier")
+      elseif data.eventName == "unicorn" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé le ~b~Unicorn")
+	  elseif data.eventName == "state" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~agent du Gouvernement")
+	  elseif data.eventName == "pilot" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Pilot")
+	  elseif data.eventName == "fib" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~agent du FBI")
+	  elseif data.eventName == "army" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Millitaire")
+	  elseif data.eventName == "realestateagent" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Agent Immobillier")
+	  elseif data.eventName == "pilot" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Pilot")
+	  elseif data.eventName == "epicerie" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Épicier")
+	  elseif data.eventName == "brinks" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~agent de la Brinks")
+	  elseif data.eventName == "bahama" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé le ~b~Bahama mamas")
+      end
+	  
+	  
+	
+	
+    else
+      local limit = data.limit or 255
+      local text = data.text or ''
+      if data.eventName ~= "RESPAWN" then
+        DisplayOnscreenKeyboard(1, "FMMC_MPM_NA", "", text, "", "", "", limit)
+        while (UpdateOnscreenKeyboard() == 0) do
+            DisableAllControlActions(0);
+            Wait(0);
+        end
+        if (GetOnscreenKeyboardResult()) then
+            text = GetOnscreenKeyboardResult()
+        end
+        TriggerServerEvent("call:makeCall", data.eventName, {x=plyPos.x,y=plyPos.y,z=plyPos.z}, text, GetPlayerServerId(player))
+      if data.eventName == "police" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé la ~b~Police")
+      elseif data.eventName == "taxi" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Taxi")
+      elseif data.eventName == "mecano" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Mécano")
+      elseif data.eventName == "journaliste" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Journaliste")
+      elseif data.eventName == "ambulance" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Ambulancier")
+      elseif data.eventName == "unicorn" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé le ~b~Unicorn")
+	  elseif data.eventName == "state" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~agent du Gouvernement")
+	  elseif data.eventName == "pilot" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Pilot")
+	  elseif data.eventName == "fib" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~agent du FBI")
+	  elseif data.eventName == "army" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Millitaire")
+	  elseif data.eventName == "realestateagent" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Agent Immobillier")
+	  elseif data.eventName == "pilot" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Pilot")
+	  elseif data.eventName == "epicerie" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~Épicier")
+	  elseif data.eventName == "brinks" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé un ~b~agent de la Brinks")
+	  elseif data.eventName == "bahama" then
+        ShowNotificationMenuCivil2("~h~Vous avez appelé le ~b~Bahama mamas")
+      end
+      else
+        TriggerEvent('esx_ambulancejob:heal')
+      end
+    end
+    cb()
+  end
+end)
+
 -- Add security for event (leuit#0100)
 RegisterNUICallback('callEvent', function(data, cb)
   local eventName = data.eventName or ''
@@ -772,3 +865,10 @@ RegisterNUICallback('takePhoto', function(data, cb)
   Citizen.Wait(1000)
   PhonePlayAnim('text', false, true)
 end)
+
+function ShowNotificationMenuCivil2(message)
+  SetNotificationTextEntry("STRING");
+  AddTextComponentString(message);
+  SetNotificationMessage("CHAR_CHAT_CALL", "CHAR_CHAT_CALL", true, 1, "Urgence", false, message);
+  DrawNotification(false, true);
+end

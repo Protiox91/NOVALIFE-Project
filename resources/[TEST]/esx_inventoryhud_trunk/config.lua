@@ -79,7 +79,7 @@ local Keys = {
 
 Config = {}
 
-Config.CheckOwnership = false -- If true, Only owner of vehicle can store items in trunk.
+Config.CheckOwnership = true -- If true, Only owner of vehicle can store items in trunk.
 Config.AllowPolice = false -- If true, police will be able to search players' trunks.
 
 Config.Locale = "fr"
@@ -129,6 +129,6 @@ Config.VehicleLimit = {
 Config.VehiclePlate = {
     taxi = "TAXI",
     cop = "LSPD",
-    ambulance = "EMS0",
+    ambulance = "EMS",
     mecano = "MECA"
 }

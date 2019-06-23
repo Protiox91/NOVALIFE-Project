@@ -986,25 +986,10 @@ AddEventHandler('esx_jewels_robbery:togliblip', function(robb)
 	RemoveBlip(gioielli20)
 end)
 
-RegisterNetEvent("lester:createBlip")
-AddEventHandler("lester:createBlip", function(type, x, y, z)
-	local blip = AddBlipForCoord(x, y, z)
-	SetBlipSprite(blip, type)
-	SetBlipColour(blip, 1)
-	SetBlipScale(blip, 0.8)
-	SetBlipAsShortRange(blip, true)
-	if(type == 77)then
-		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString("Lester")
-		EndTextCommandSetBlipName(blip)
-	end
-end)
-
 Citizen.CreateThread(function()
-		TriggerEvent('lester:createBlip', 77, 706.669, -966.898, 30.413)
 
     while true do
-       Citizen.Wait(0)
+       Citizen.Wait(2)
        playerPed = GetPlayerPed(-1)
 		local pos = GetEntityCoords(GetPlayerPed(-1), true)
 		

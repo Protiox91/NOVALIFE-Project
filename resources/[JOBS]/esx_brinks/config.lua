@@ -37,7 +37,7 @@ Config.zones = {
     enable  = true,
     gps     = {x=11.27, y=-661.5, z=32.46},
     markerD = {type=27, drawDistance=50.0, size={x=2.0, y=2.0, z=1.5}, color={r=11, g=203, b=159} },
-    blipD   = {sprite=67, display=4, scale=0.9, color=52, range=true, name=_U('cloakroom_blip') }
+    --blipD   = {sprite=67, display=4, scale=0.9, color=52, range=true, name=_U('cloakroom_blip') }
   },
   vehicleSpawner = {
     enable = false,

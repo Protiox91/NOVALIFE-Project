@@ -1,7 +1,7 @@
 Config = {}
 Config.Blip			= {sprite= 290, color = 30}
 Config.MecanoBlip	= {sprite= 290, color = 20}
-Config.Price		= 500
+Config.Price		= 250
 
 Config.Garages = {
 	Garage_Centre = {	

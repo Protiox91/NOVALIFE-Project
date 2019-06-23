@@ -71,8 +71,8 @@ function OpenMechanicActionsMenu()
 
 	local elements = {
 		{label = _U('vehicle_list'),   value = 'vehicle_list'},
-		{label = _U('work_wear'),      value = 'cloakroom'},
-		{label = _U('civ_wear'),       value = 'cloakroom2'},
+		{label = 'Prendre Service',      value = 'cloakroom'},
+		{label = 'Terminer Service',       value = 'cloakroom2'},
 		{label = _U('deposit_stock'),  value = 'put_stock'},
 		{label = _U('withdraw_stock'), value = 'get_stock'}
 	}
@@ -104,6 +104,7 @@ function OpenMechanicActionsMenu()
 					end
 
 					ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_spawner', {
+						css = 'vehicle',
 						title    = _U('service_vehicle'),
 						align    = 'top-left',
 						elements = elements

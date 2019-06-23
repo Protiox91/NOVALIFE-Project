@@ -1,13 +1,15 @@
 resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
 
-ui_page 'ui/index.html'
+--ui_page 'ui/index.html'
 
+--[[
 files {
   'ui/index.html',
   'ui/style.css',
   'ui/img/nova.png',
   'ui/script.js'
 }
+--]]
 
 client_scripts {
     "client.lua",
@@ -18,13 +20,12 @@ client_scripts {
     "pointing.lua",
     "config.lua",
     "ko_client.lua",
-    "blackout.lua",
     "traffic.lua",
     "rc_car.lua",
     "cl_drag.lua",
-    "server",
+    "server"
     --"alert_cl.lua",
-    "water.lua"
+    --"water.lua"
 }
 exports {
   'open',

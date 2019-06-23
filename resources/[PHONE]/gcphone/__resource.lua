@@ -23,6 +23,10 @@ files {
 	'html/static/img/background/nova1.jpg',
 	
 	'html/static/img/icons_app/call.png',
+	'html/static/img/icons_app/policier.png',
+	'html/static/img/icons_app/ambulancier.png',
+	'html/static/img/icons_app/taxi.png',
+	'html/static/img/icons_app/mecano.png',
 	'html/static/img/icons_app/contacts.png',
 	'html/static/img/icons_app/sms.png',
 	'html/static/img/icons_app/settings.png',

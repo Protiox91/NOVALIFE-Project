@@ -45,12 +45,14 @@ AddEventHandler(
 )
 
 RegisterNetEvent("esx:setJob")
-AddEventHandler(
-  "esx:setJob",
-  function(job)
+AddEventHandler("esx:setJob", function(job)
     PlayerData.job = job
-  end
-)
+end)
+
+RegisterNetEvent("esx:setJob2")
+AddEventHandler("esx:setJob2", function(job2)
+    PlayerData.job2 = job2
+end)
 
 RegisterNetEvent("esx_trunk_inventory:setOwnedVehicule")
 AddEventHandler(
@@ -182,6 +184,8 @@ end
 local count = 0
 
 -- Key controls
+
+--[[
 Citizen.CreateThread(
   function()
     while true do
@@ -192,7 +196,7 @@ Citizen.CreateThread(
       end
     end
   end
-)
+)--]]
 
 Citizen.CreateThread(
   function()

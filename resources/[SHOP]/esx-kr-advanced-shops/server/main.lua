@@ -151,7 +151,7 @@ AddEventHandler('esx_kr_shops:Buy', function(id, Item, ItemCount)
         }, function(result2)
 
             if xPlayer.getMoney() < ItemCount * result[1].price then
-                TriggerClientEvent('esx:showNotification', src, '~r~Vous n\'avez pas assez d\'argent')
+                xPlayer.removeBank(ItemCount * result[1].price)
             else
                 xPlayer.removeMoney(ItemCount * result[1].price)
                 --TriggerClientEvent('esx:showNotification', xPlayer.source, '~g~Vous avez acheté ' .. ItemCount .. 'x ' .. Item .. ' pour ' .. ItemCount * result[1].price'$')

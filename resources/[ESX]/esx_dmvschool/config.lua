@@ -12,7 +12,7 @@ Config.Prices = {
 }
 
 Config.VehicleModels = {
-	drive       = 'blista',
+	drive       = 'peug308',
 	drive_bike  = 'sanchez',
 	drive_truck = 'mule3'
 }

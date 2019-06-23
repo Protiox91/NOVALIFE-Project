@@ -25,3 +25,7 @@ client_scripts {
   "config.lua",
   "client/esx_trunk-cl.lua"
 }
+
+exports {
+  'openmenuvehicle'
+}

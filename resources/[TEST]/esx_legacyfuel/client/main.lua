@@ -15,7 +15,10 @@ blacklistedVehicles = {
 	[4] = 'SCORCHER',
 	[5] = 'TRIBIKE',
 	[6] = 'TRIBIKE2',
-	[7] = 'TRIBIKE3'
+	[7] = 'TRIBIKE3',
+	[8] = 'TUG',
+	[9] = 'DINGHY',
+	[10] = 'DINGHY2'
 }
 
 local Vehicles 				  = {}
@@ -62,7 +65,7 @@ end
 function loadAnimDict(dict)
 	while(not HasAnimDictLoaded(dict)) do
 		RequestAnimDict(dict)
-		Citizen.Wait(1)
+		Citizen.Wait(2)
 	end
 end
 
@@ -80,7 +83,7 @@ end
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		Citizen.Wait(5)
 
 		if not InBlacklistedVehicle then
 			if Timer then
@@ -92,11 +95,11 @@ Citizen.CreateThread(function()
 				local fuel 	   = round(GetVehicleFuelLevel(vehicle), 1)
 				
 				if IsPedInAnyVehicle(GetPlayerPed(-1), false) then
-					DrawText3Ds(pumpLoc['x'], pumpLoc['y'], pumpLoc['z'], "Exit to fuel your vehicle")
+					DrawText3Ds(pumpLoc['x'], pumpLoc['y'], pumpLoc['z'], "Sors du véhicule")
 				elseif IsFueling then
 					local position = GetEntityCoords(vehicle)
 
-					DrawText3Ds(pumpLoc['x'], pumpLoc['y'], pumpLoc['z'], "Press ~g~G ~w~to cancel the fueling of your vehicle. $~r~" .. price .. " ~w~+  tax")
+					DrawText3Ds(pumpLoc['x'], pumpLoc['y'], pumpLoc['z'], "Appuie sur ~g~G ~w~pour arrêter le plein $~r~" .. price .. " ~w~")
 					DrawText3Ds(position.x, position.y, position.z + 0.5, fuel .. "%")
 					
 					DisableControlAction(0, 0, true) -- Changing view (V)
@@ -551,7 +554,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5000)
+		Citizen.Wait(5250)
 
 		local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1))
 		local engine  = Citizen.InvokeNative(0xAE31E7DF9B5B132E, vehicle)
@@ -562,7 +565,10 @@ Citizen.CreateThread(function()
 			local fuel     	   = GetVehicleFuelLevel(vehicle)
 			local rpmfuelusage = 0
 
-			if rpm > 0.9 then
+			rpmfuelusage = fuel - rpm / 7.4
+			Citizen.Wait(15000)
+
+			--[[if rpm > 0.9 then
 				rpmfuelusage = fuel - rpm / 0.8
 				Citizen.Wait(1000)
 			elseif rpm > 0.8 then
@@ -586,10 +592,8 @@ Citizen.CreateThread(function()
 			elseif rpm > 0.2 then
 				rpmfuelusage = fuel - rpm / 7.3
 				Citizen.Wait(8000)
-			else
-				rpmfuelusage = fuel - rpm / 7.4
-				Citizen.Wait(15000)
-			end
+			else	
+			end--]]
 
 			for i = 1, #Vehicles do
 				if Vehicles[i].plate == plate then

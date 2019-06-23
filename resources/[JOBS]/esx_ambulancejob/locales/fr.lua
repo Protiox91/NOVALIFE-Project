@@ -68,23 +68,23 @@ Locales['fr'] = {
   ['ems_menu_small'] = 'soigner petites blessures',
   ['ems_menu_big'] = 'soigner blessures graves',
   -- Phone
-  ['alert_ambulance'] = 'alerte Ambulance',
+  ['alert_ambulance'] = 'Alerte Ambulance',
   -- Death
-  ['respawn_available_in'] = 'réanimation possible dans ~b~%s minutes %s secondes~s~',
-  ['respawn_bleedout_in'] = 'vous allez souffrir d\'une hémorragie dans ~b~%s minutes %s secondes~s~\n',
+  ['respawn_available_in'] = 'Réanimation possible dans ~b~%s minutes %s secondes~s~',
+  ['respawn_bleedout_in'] = 'Vous allez souffrir d\'une hémorragie dans ~b~%s minutes %s secondes~s~\n',
   ['respawn_bleedout_prompt'] = 'maintenez [~b~E~s~] pour être réanimé',
   ['respawn_bleedout_fine'] = 'maintenez [~b~E~s~] pour être réanimé pour ~g~$%s~s~',
   ['respawn_bleedout_fine_msg'] = 'vous avez payé ~r~$%s~s~ pour être réanimer.',
-  ['distress_send'] = 'appuyez sur [~b~G~s~] pour envoyer un signal de détresse',
-  ['distress_sent'] = 'un signal a été envoyé à toutes les unités disponibles!',
+  ['distress_send'] = 'Appuyez sur [~b~G~s~] pour envoyer un signal de détresse',
+  ['distress_sent'] = 'Un signal a été envoyé à toutes les unités disponibles!',
   ['distress_message'] = 'interventtion requise: citoyen inconscient!',
   ['combatlog_message'] = 'vous avez été réanimé de force car vous avez quitté le serveur.',
   -- Revive
-  ['revive_help'] = 'relancer un joueur',
+  ['revive_help'] = 'Réanimer un joueur',
   -- Item
   ['used_medikit'] = 'vous avez utilisé 1x kit de soin',
   ['used_bandage'] = 'vous avez utilisé 1x bandage',
-  ['not_enough_medikit'] = 'vous n\'avez pas de ~b~kit de soin~s~.',
-  ['not_enough_bandage'] = 'vous n\'avez pas de ~b~bandage~s~.',
-  ['healed'] = 'vous avez été soigné.',
+  ['not_enough_medikit'] = 'Vous n\'avez pas de ~b~kit de soin~s~.',
+  ['not_enough_bandage'] = 'Vous n\'avez pas de ~b~bandage~s~.',
+  ['healed'] = 'Vous avez été soigné.',
 }

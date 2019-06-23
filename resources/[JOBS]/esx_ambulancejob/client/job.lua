@@ -463,6 +463,7 @@ end)
 function OpenCloakroomMenu()
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'cloakroom',
 	{
+		css = 'vestiaire',
 		title		= _U('cloakroom'),
 		align		= 'top-left',
 		elements = {
@@ -482,6 +483,7 @@ function OpenCloakroomMenu()
 					TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_female)
 				end
 			end)
+			TriggerServerEvent("player:serviceOn", "ambulance")
 		end
 
 		menu.close()

@@ -8,9 +8,6 @@ $(function(){
 			if (event.data.key == "job"){
 				setJobIcon(event.data.icon)
 			}
-			if (event.data.key == "job2"){
-				setJobIcon(event.data.icon2)
-			}
 			setValue(event.data.key, event.data.value)
 
 		}else if (event.data.action == "updateStatus"){
@@ -26,7 +23,7 @@ $(function(){
 			} else{
 				$('#ui').hide();
 			}
-		} else if (event.data.action == "toggleCar"){
+		/*} else if (event.data.action == "toggleCar"){
 			if (event.data.show){
 				//$('.carStats').show();
 			} else{
@@ -34,7 +31,7 @@ $(function(){
 			}
 		}else if (event.data.action == "updateCarStatus"){
 			updateCarStatus(event.data.status)
-		/*}else if (event.data.action == "updateWeight"){
+		}else if (event.data.action == "updateWeight"){
 			updateWeight(event.data.weight)*/
 		}
 	});

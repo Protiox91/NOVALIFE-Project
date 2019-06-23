@@ -50,7 +50,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 	local job = data.job
 	SendNUIMessage({action = "setValue", key = "job", value = job.label.." - "..job.grade_label, icon = job.name})
 	local job2 = data.job2
-	SendNUIMessage({action = "setValue", key = "job2", value = job2.label.." - "..job2.grade_label, icon2 = job2.name})
+	SendNUIMessage({action = "setValue", key = "job2", value = job2.label.." - "..job2.grade_label, icon = job2.name})
 	-- Money
 	SendNUIMessage({action = "setValue", key = "money", value = "$"..data.money})
 end)
@@ -146,7 +146,7 @@ AddEventHandler('esx:setJob', function(job)
 end)
 
 RegisterNetEvent('esx:setJob2')
-AddEventHandler('esx:setJob2', function(job)
+AddEventHandler('esx:setJob2', function(job2)
   SendNUIMessage({action = "setValue", key = "job2", value = job2.label.." - "..job2.grade_label, icon = job2.name})
 end)
 

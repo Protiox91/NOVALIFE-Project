@@ -20,14 +20,14 @@ AddEventHandler('esx:setJob', function(job)
 end)
 
 --Config
-local timer = 1 --in minutes - Set the time during the player is outlaw
+local timer = 3 --in minutes - Set the time during the player is outlaw
 local showOutlaw = true --Set if show outlaw act on map
-local gunshotAlert = true --Set if show alert when player use gun
+local gunshotAlert = false --Set if show alert when player use gun
 local carJackingAlert = true --Set if show when player do carjacking
 local meleeAlert = false --Set if show when player fight in melee
 local blipGunTime = 25 --in second
 local blipMeleeTime = 25 --in second
-local blipJackingTime = 25 -- in second
+local blipJackingTime = 40 -- in second
 local showcopsmisbehave = true  --show notification when cops steal too
 --End config
 

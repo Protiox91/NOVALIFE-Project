@@ -259,7 +259,7 @@ function MenuPrincipal(menu)
     menu:AddItem(click5)
     menu:AddItem(click8)
     menu:AddItem(click9)
-    menu:AddItem(click4)
+    --menu:AddItem(click4)
     menu:AddItem(click2)
     menu:AddItem(click3)
 end
@@ -278,12 +278,12 @@ function configmenu(menu)
         if item == c2 then
             advancednotify("CHAR_LIFEINVADER", 1, "NovaLife RP", false, "~g~Le HUD est ouvert !")
             exports.esx_customui:toggle(true)  
-            exports.BrookAPI:open() 
+            --exports.BrookAPI:open() 
             DisplayRadar(true)         
         elseif item == c3 then
             advancednotify("CHAR_LIFEINVADER", 1, "NovaLife RP", false, "~r~Le HUD est fermé !")
             exports.esx_customui:toggle(false)
-            exports.BrookAPI:close()  
+            --exports.BrookAPI:close()  
             DisplayRadar(false)
         elseif item == c5 then
             exports.speedometer:changeSkin('default')
@@ -483,7 +483,7 @@ function vehicle(menu)
             Limitmenu:Visible(not Limitmenu:Visible())
         end
     end  
-    menu:AddItem(clar5)
+    --menu:AddItem(clar5)
     menu:AddItem(clar1)
     menu:AddItem(clar3)
     menu:AddItem(clar4)
