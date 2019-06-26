@@ -10,6 +10,12 @@ local PlayerData = {}
 local ped = GetPlayerPed(-1)
 local vehicle = GetVehiclePedIsIn(ped, false)
 local sp = 3.6
+local voix = {
+    "Crier", 
+    "Parler",
+    "Chuchoter"
+
+}
 _menuPool = NativeUI.CreatePool()
 mainMenu = NativeUI.CreateMenu("NovaLife", "~b~NOVALIFE RP")
 confMenu = NativeUI.CreateMenu("Configuration", "~b~NOVALIFE RP")
@@ -25,6 +31,7 @@ divMenu = NativeUI.CreateMenu("Divers", "~b~NOVALIFE RP")
 modMenu = NativeUI.CreateMenu("Modération", "~b~NOVALIFE RP")
 Brookmenu = NativeUI.CreateMenu("Vendeur illégal", "~b~NOVALIFE RP")
 Limitmenu = NativeUI.CreateMenu("Limitateur de Vitesse", "~b~NOVALIFE RP")
+infsmenu = NativeUI.CreateMenu("Me concernant", "~b~NOVALIFE RP")
 _menuPool:Add(mainMenu)
 _menuPool:Add(confMenu)
 _menuPool:Add(credMenu)
@@ -39,6 +46,34 @@ _menuPool:Add(divMenu)
 _menuPool:Add(modMenu)
 _menuPool:Add(Brookmenu)
 _menuPool:Add(Limitmenu)
+_menuPool:Add(infsmenu)
+_menuPool:ControlDisablingEnabled(false)
+
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
+    --SendNUIMessage({action = "setValue", key = "job", value = job.label.." - "..job.grade_label, icon = job.name})
+    jobname = job.label
+    jobgrade = job.grade_label
+end)
+
+RegisterNetEvent('esx:setJob2')
+AddEventHandler('esx:setJob2', function(job2)
+    --SendNUIMessage({action = "setValue", key = "job2", value = job2.label.." - "..job2.grade_label, icon = job2.name})
+    job2name = job2.label
+    job2grade = job2.grade_label
+end)
+
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(xPlayer) 
+    local data = xPlayer
+    local money = data.money
+end)
+
+RegisterNetEvent('es:activateMoney')
+AddEventHandler('es:activateMoney', function(e)
+	local money = e
+end)
+
 
 function round(num, numDecimalPlaces)
 	return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
@@ -89,11 +124,11 @@ end
 Citizen.CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
-	end
-
+		Citizen.Wait(100)
+    end
+    NetworkSetTalkerProximity(10.0)
 	while ESX.GetPlayerData().job == nil do
-		Citizen.Wait(10)
+		Citizen.Wait(100)
 	end
 
 	PlayerData = ESX.GetPlayerData()
@@ -196,7 +231,7 @@ end
 
 
 function MenuPrincipal(menu)
-    local click1 = NativeUI.CreateItem("Me concernant", "Toutes vos infos RP") 
+    local click1 = NativeUI.CreateItem("Interaction", "") 
     local click2 = NativeUI.CreateItem("Configuration", "Configurer votre jeu") 
     local click3 = NativeUI.CreateItem("Crédits serveur", "Qui sont les créateurs de ce serveur ?") 
     local click4 = NativeUI.CreateItem("Véhicule", "Véhicule")
@@ -206,6 +241,9 @@ function MenuPrincipal(menu)
     local click8 = NativeUI.CreateItem("Vétements", "Vétements")
     local click9 = NativeUI.CreateItem("Actions", "Menu Actions")
     local click10 = NativeUI.CreateItem("Mon Travail", "Menu Travail")
+    local click11 = NativeUI.CreateItem("Mon Travail", "Menu Travail")
+    local click12 = NativeUI.CreateListItem("Voix", voix, 1)
+    local click13 = NativeUI.CreateItem("Me concernant", "Toutes vos infos RP")
     menu.OnItemSelect = function(sender, item, index)
         if item == click1 then
             rpMenu:Visible(not rpMenu:Visible())
@@ -228,6 +266,21 @@ function MenuPrincipal(menu)
         elseif item == click9 then
             intMenu:Visible(not intMenu:Visible())
             mainMenu:Visible(not mainMenu:Visible())
+        elseif item == click12 then
+            local mode = item:IndexToItem(index)
+            if mode == "Parler"
+                advancednotify("CHAR_HUMANDEFAULT", 1, "Moi", false, "Tu parle ! (10 M)")
+                NetworkSetTalkerProximity(10.0)
+                TriggerEvent('esx_customui:voice', "normal")
+            elseif mode == "Chuchoter"
+                advancednotify("CHAR_HUMANDEFAULT", 1, "Moi", false, "Tu chuchote ! (2 M)")
+                NetworkSetTalkerProximity(2.0)
+                TriggerEvent('esx_customui:voice', "whisper")
+            elseif mode == "Crier"
+                advancednotify("CHAR_HUMANDEFAULT", 1, "Moi", false, "Tu crie ! (26 M)")
+                NetworkSetTalkerProximity(26.0)
+                TriggerEvent('esx_customui:voice', "shout")
+            end
         elseif item == click10 then
             if PlayerData.job and PlayerData.job.name == 'police' then
                 mainMenu:Visible(not mainMenu:Visible())  
@@ -252,16 +305,30 @@ function MenuPrincipal(menu)
             elseif PlayerData.job and PlayerData.job.name == 'charbon' or PlayerData.job.name == 'fisherman' or PlayerData.job.name == 'fueler' or PlayerData.job.name == 'garbage' or PlayerData.job.name == 'lumberjack' or PlayerData.job.name == 'miner' or PlayerData.job.name == 'poolcleaner' or PlayerData.job.name == 'salvage' or PlayerData.job.name == 'slaughterer' or PlayerData.job.name == 'tailor' or PlayerData.job.name == 'tailor' then
                 advancednotify("CHAR_LIFEINVADER", 1, "NovaLife RP", false, "~r~Tu n'est qu'un intérimaire !")
             end
+        elseif item == click13 then 
+            mainMenu:Visible(not mainMenu:Visible()) 
+            infsmenuMenu:Visible(not infsmenu:Visible())  
         end
     end
     menu:AddItem(click1)
+    menu:AddItem(click13)
     menu:AddItem(click10)
     menu:AddItem(click5)
     menu:AddItem(click8)
     menu:AddItem(click9)
+    menu:AddItem(click12)
     --menu:AddItem(click4)
     menu:AddItem(click2)
     menu:AddItem(click3)
+end
+
+function infosrp(menu)
+    local jobf = NativeUI.CreateItem("Votre métier :" ..jobname.. " - "..jobgrade "", "Toutes vos infos RP") 
+    local jobf2 = NativeUI.CreateItem("Votre statut :" ..job2name..  " - " ..job2grade "", "Toutes vos infos RP") 
+    local jobf2 = NativeUI.CreateItem("Votre portefeuille :" ..money " $", "Toutes vos infos RP") 
+    menu:AddItem(jobf)
+    menu:AddItem(jobf2)
+    menu:AddItem(jobf3)
 end
 
 function configmenu(menu)
@@ -994,6 +1061,7 @@ div(divMenu)
 mod(modMenu)
 Brook(Brookmenu)
 Limit(Limitmenu)
+infosrp(infsmenu)
 _menuPool:RefreshIndex()
 
 ---THREADS---
@@ -1010,7 +1078,14 @@ end)
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Citizen.Wait(60000)
+        _menuPool:ProcessMenus()
+    end
+end)
+
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(5)
         _menuPool:ProcessMenus()
         if IsControlJustPressed(1, 289) then -- If the key you specified in the config is pressed open then menu, if the menu is open close the menu.
             mainMenu:Visible(not mainMenu:Visible())

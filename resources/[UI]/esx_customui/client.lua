@@ -23,7 +23,7 @@ Citizen.CreateThread(function()
 	ESX.UI.HUD.SetDisplay(0.0)
 	
 	-- Updates the UI on start
-	NetworkSetTalkerProximity(10.0)
+	
 end)
 
 function advancednotify(icon, type, sender, title, text)
@@ -90,7 +90,7 @@ Citizen.CreateThread(function()
 end)
 
 -- Voice
-
+--[[
 local prox = 26.0 -- Sets the Default Voice Distance
 local allowProximityChange = true -- Set to True to allow Changing Voice Distance | False to not allow Changing Voice Distance
 
@@ -121,6 +121,7 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
+--]]
 
 function toggle(show)
 	SendNUIMessage({action = "toggle", show = show})
@@ -166,3 +167,9 @@ AddEventHandler('esx_customui:updateWeight', function(weight)
 	weightprc = (weight/8000)*100
 	SendNUIMessage({action = "updateWeight", weight = weightprc})
 end)
+
+RegisterNetEvent('esx_customui:voice')
+AddEventHandler('esx_customui:voice', function(prox)
+	SendNUIMessage({action = "setProximity", value = prox})
+end)
+
