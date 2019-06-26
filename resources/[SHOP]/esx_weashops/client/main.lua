@@ -28,7 +28,7 @@ end
 Citizen.CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+		Citizen.Wait(10)
 	end
 
 	ESX.TriggerServerCallback('esx_weashop:requestDBItems', function(ShopItems)
@@ -49,10 +49,11 @@ function OpenBuyLicenseMenu(zone)
 	ESX.UI.Menu.CloseAll()
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'shop_license', {
-		title = _U('buy_license'),
+		css = 'Magasin',
+		title = "Acheter une license ?",
 		elements = {
-			{ label = ('yes'), ('<span style="color: green;">%s</span>'):format((_U('shop_menu_item', GroupDigits(Config.LicensePrice)))), value = 'yes' },
-			{ label = ('no'), value = 'no' }
+			{ label = ('Oui'), ('<span style="color: green;">%s</span>'):format((_U('shop_menu_item', GroupDigits(Config.LicensePrice)))), value = 'yes' },
+			{ label = ('Non'), value = 'no' }
 		}
 	}, function(data, menu)
 		if data.current.value == 'yes' then
@@ -176,7 +177,7 @@ end)
 -- Key Controls
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Citizen.Wait(5)
 
 		if CurrentAction ~= nil then
 			ESX.ShowHelpNotification(CurrentActionMsg)

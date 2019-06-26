@@ -29,7 +29,7 @@ ESX                           = nil
 Citizen.CreateThread(function()
   while ESX == nil do
     TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-    Citizen.Wait(10)
+    Citizen.Wait(20)
   end
 end)
 
@@ -72,9 +72,9 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
   PlayerData = xPlayer
 end)
 
-RegisterNetEvent('esx:setJob')
-AddEventHandler('esx:setJob', function(job)
-  PlayerData.job = job
+RegisterNetEvent('esx:setJob2')
+AddEventHandler('esx:setJob2', function(job2)
+  PlayerData.job = job2
 end)
 
 
@@ -88,7 +88,7 @@ end
 function setClipset(playerPed, clip)
   RequestAnimSet(clip)
   while not HasAnimSetLoaded(clip) do
-    Citizen.Wait(0)
+    Citizen.Wait(10)
   end
   SetPedMovementClipset(playerPed, clip, true)
 end
@@ -885,7 +885,7 @@ function animsAction(animObj)
                 -- Play Animation
                 RequestAnimDict(dataAnim.lib)
                 while not HasAnimDictLoaded(dataAnim.lib) do
-                    Citizen.Wait(0)
+                    Citizen.Wait(7)
                 end
                 if HasAnimDictLoaded(dataAnim.lib) then
                     local flag = 0
@@ -901,7 +901,7 @@ function animsAction(animObj)
 
                 -- Wait end animation
                 while true do
-                    Citizen.Wait(0)
+                    Citizen.Wait(5)
                     if not IsEntityPlayingAnim(playerPed, dataAnim.lib, dataAnim.anim, 3) then
                         playAnim = false
                         TriggerEvent('ft_animation:ClFinish')
@@ -1102,7 +1102,7 @@ end)
 Citizen.CreateThread(function()
   while true do
 
-    Citizen.Wait(5)
+    Citizen.Wait(15)
 
     if CurrentAction ~= nil then
 

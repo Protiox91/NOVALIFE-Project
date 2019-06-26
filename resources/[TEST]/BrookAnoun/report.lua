@@ -9,7 +9,7 @@ function report(_name, msg)
             ["title"] = "Nouveaux REPORT :" ,
             ["fields"] =  {
                             {
-                                ["name"]= "Nom:",
+                                ["name"]= "Nom de l'envoyeur :",
                                 ["value"]= _name,
                             },
                             {
@@ -26,16 +26,15 @@ function report(_name, msg)
 end
 
 RegisterServerEvent('Brook:report')
-AddEventHandler('Brook:report', function(source, msg)
+AddEventHandler('Brook:report', function(msg)
     local _source = source
     local XPlayer = ESX.GetPlayerFromId(_source)
-    TriggerClientEvent('Brook:Display')
-    report(XPlayer.name, text)
+    report(XPlayer.name, msg)
     TriggerClientEvent('esx:showNotification', _source, "Votre report a bien été pris en compte !")
 end)
 
-TriggerEvent('es:addGroupCommand', 'report', 'user', function(source, args, user)
-    TriggerEvent('Brook:report', source)
-end, function(source, args, user)
-    TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'ERREUR' } })
-end, {help = "Reporter un mauvais comportement ou un problème aux admins", params = {}})
+--TriggerEvent('es:addGroupCommand', 'report', 'user', function(source, args, user)
+    --TriggerClientEvent('Brook:Display', source)
+--end, function(source, args, user)
+    --TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'ERREUR' } })
+--end, {help = "Reporter un mauvais comportement ou un problème aux admins", params = {}})

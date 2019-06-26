@@ -18,7 +18,7 @@ local deliveryblip
 Citizen.CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+		Citizen.Wait(20)
 	end
 end)
 
@@ -74,7 +74,7 @@ function SpawnCar()
 					RequestModel(vehiclehash)
 					while not HasModelLoaded(vehiclehash) do
 						RequestModel(vehiclehash)
-						Citizen.Wait(1)
+						Citizen.Wait(5)
 					end
 					car = CreateVehicle(vehiclehash, Config.VehicleSpawnPoint.Pos.x, Config.VehicleSpawnPoint.Pos.y, Config.VehicleSpawnPoint.Pos.z, 0.0, true, false)
 					SetEntityAsMissionEntity(car, true, true)
@@ -268,7 +268,7 @@ end)
 -- Key Controls
 Citizen.CreateThread(function()
   while true do
-    Citizen.Wait(0)
+    Citizen.Wait(5)
     if CurrentAction ~= nil then
       SetTextComponentFormat('STRING')
       AddTextComponentString(CurrentActionMsg)

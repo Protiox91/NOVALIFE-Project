@@ -4,7 +4,7 @@ local count = 60
 
 Citizen.CreateThread(function()
 	while true do
-		Wait(15)
+		Wait(20)
 		local myPed = GetPlayerPed(-1)
 		if IsPedInMeleeCombat(myPed) then
 			if GetEntityHealth(myPed) < 115 then

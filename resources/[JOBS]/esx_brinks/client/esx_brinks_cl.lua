@@ -46,23 +46,24 @@ Citizen.CreateThread(function()
   coords     = GetEntityCoords(GetPlayerPed(-1))
   inVehicle  = false
   -- load zone
-  --for k,v in pairs(Config.zones) do
-    --local zone = v
-    --zone.name = k
-    --if k == 'cloakRoom' then zone.blip = nil
+  for k,v in pairs(Config.zones) do
+    local zone = v
+    zone.name = k
+    --if k == 'cloakRoom' then zone.blip = drawBlip(zone.gps, zone.blipD)
     --else zone.blip = nil end
-    --table.insert(zoneList, zone)
-  --end
+    table.insert(zoneList, zone)
+  end
   -- init end
-  --isLoading = false
-  --printDebug('Loaded in ' .. tostring(GetGameTimer() - startLoad) .. 'ms')
+  isLoading = false
+  printDebug('Loaded in ' .. tostring(GetGameTimer() - startLoad) .. 'ms')
 end)
+
 
 -- MAIN
 Citizen.CreateThread(function()
   while isLoading do Citizen.Wait(10) end
   while true do
-    Citizen.Wait(100)
+    Citizen.Wait(75)
     -- refresh playerData ...
     local playerPed = GetPlayerPed(-1)
     playerData = ESX.GetPlayerData()
@@ -72,12 +73,11 @@ Citizen.CreateThread(function()
     if isWorking and playerData.job.name ~= Config.jobName then isWorking = false end
     if isRunning and playerData.job.name ~= Config.jobName then isRunning = false end
     -- refresh zone
-    --[[for i=1, #zoneList, 1 do
+    for i=1, #zoneList, 1 do
       -- disable zone for old employees
-      if playerData.job.name ~= Config.jobName and zoneList[i].enable then zoneList[i].enable = false
+      if playerData.job.name ~= Config.jobName and zoneList[i].enable then zoneList[i].enable = false end
       -- enable cloakroom zone for new employees
-      elseif playerData.job.name == Config.jobName and not zoneList[i].enable and zoneList[i].name == 'cloakRoom' then zoneList[i].enable = false end
-    end--]]
+    end
     -- others
   end
 end)
@@ -102,33 +102,35 @@ function drawBlip(gps, blipData)
   return blip
 end
 
---[[Citizen.CreateThread(function()
+
+Citizen.CreateThread(function()
   while isLoading do Citizen.Wait(10) end
   while true do
-    Citizen.Wait(1000)
-    --[[for i=1, #zoneList, 1 do
+    Citizen.Wait(3000)
+    for i=1, #zoneList, 1 do
       -- for employees
       if playerData.job.name == Config.jobName then
         -- draw blip
         if zoneList[i].enable and not DoesBlipExist(zoneList[i].blip) then zoneList[i].blip = drawBlip(zoneList[i].gps, zoneList[i].blipD)
         -- remove blip execpt cloakroom
-        elseif not zoneList[i].enable and DoesBlipExist(zoneList[i].blip) and zoneList[i].name ~= 'cloakRoom' then 
-          RemoveBlip(zoneList[i].blip)
-          zoneList[i].blip = nil
-          printDebug('remove Blip: '.. zoneList[i].name)
+        --elseif not zoneList[i].enable  then 
+          --RemoveBlip(zoneList[i].blip)
+          --zoneList[i].blip = nil
+          --printDebug('remove Blip: '.. zoneList[i].name)
         end
       -- for civil
-      else
+      --else
         -- remove blip execpt cloakroom
-        if zoneList[i].name ~= 'cloakRoom' and DoesBlipExist(zoneList[i].blip) then 
-          RemoveBlip(zoneList[i].blip)
-          zoneList[i].blip = nil
-          printDebug('remove Blip: '.. zoneList[i].name)
-        end
+        ---if zoneList[i].name ~= 'cloakRoom' then 
+          --RemoveBlip(zoneList[i].blip)
+          --zoneList[i].blip = nil
+          --printDebug('remove Blip: '.. zoneList[i].name)
+        --end
       end
     end
   end
-end)--]]
+end)
+
 
 -- marker
 function showMarker(zone)
@@ -141,6 +143,7 @@ function showMarker(zone)
     false, false, 2, false, false, false, false
   )
 end
+
 Citizen.CreateThread(function()
   while isLoading do Citizen.Wait(10) end
   while true do
@@ -190,6 +193,7 @@ AddEventHandler('esx_brinks:hasEnteredMarker', function(zone)
     end
   end
 end)
+
 AddEventHandler('esx_brinks:hasExitedMarker', function(zone)
   printDebug('hasExitedMarker: ' .. zone.name)
   if zone.name == 'market' then TriggerServerEvent('esx_brinks:stopHarvestRun') 
@@ -200,10 +204,11 @@ AddEventHandler('esx_brinks:hasExitedMarker', function(zone)
   currentActionMsg = ''
   ESX.UI.Menu.CloseAll()
 end)
+
 Citizen.CreateThread(function()
   while isLoading do Citizen.Wait(10) end
   while true do
-    Citizen.Wait(5)
+    Citizen.Wait(100)
     if playerData.job.name == Config.jobName then
       local isInMarker  = false
       local currentZone = nil
@@ -230,8 +235,7 @@ end)
 Citizen.CreateThread(function()
   while isLoading do Citizen.Wait(10) end
   while true do
-    Citizen.Wait(10)
-    --if IsControlJustReleased(1, Keys["F6"]) and playerData.job.name == Config.jobName then openMobileBrinksMenu() end
+    Citizen.Wait(20)
     if currentAction ~= nil then
       SetTextComponentFormat('STRING')
       AddTextComponentString(currentActionMsg)
@@ -386,6 +390,7 @@ function openBrinksActionsMenu()
     end
   )
 end
+
 function openBrinksStorageMenu()
   printDebug('openBrinksStorageMenu')
   local elements = {}    
@@ -419,6 +424,7 @@ function openBrinksStorageMenu()
   )
   
 end
+
 function openGetStocksMenu()
   printDebug('openGetStocksMenu')
   ESX.TriggerServerCallback('esx_brinks:getStockItems', function(items)
@@ -466,6 +472,7 @@ function openGetStocksMenu()
     )
   end)
 end
+
 function openPutStocksMenu()
   printDebug('openPutStocksMenu')
   ESX.TriggerServerCallback('esx_brinks:getPlayerInventory', function(inventory)
@@ -662,6 +669,7 @@ function randomizeList(list)
   end
   return newlist
 end
+
 function genMarketList()
   local coordsList = {}
   -- liste random des quartiers
@@ -676,6 +684,7 @@ function genMarketList()
   currentRun = coordsList
   printDebug('genRunList: ' .. #currentRun)
 end
+
 RegisterNetEvent('esx_brinks:nextMarket')
 AddEventHandler('esx_brinks:nextMarket', function()
   local tmpList = {}
@@ -696,6 +705,7 @@ AddEventHandler('esx_brinks:nextMarket', function()
   ESX.ShowNotification(_U('gps_info'))
   printDebug('nextMarket: ' .. #currentRun)
 end)
+
 function startNativeRun()
   printDebug('startNativeRun: ' .. #currentRun)
   for i=1, #zoneList, 1 do
@@ -706,6 +716,7 @@ function startNativeRun()
   end
   ESX.ShowNotification(_U('gps_info'))
 end
+
 function stopNativeJob()
   printDebug('stopNativeJob: ' .. #currentRun)
   for i=1, #zoneList, 1 do
@@ -716,6 +727,7 @@ function stopNativeJob()
   end
   ESX.ShowNotification(_U('cancel_mission'))
 end
+
 Citizen.CreateThread(function()
   while isLoading do Citizen.Wait(10) end
   while true do
@@ -737,15 +749,15 @@ Citizen.CreateThread(function()
 end)
 
 -- debug gps
-Citizen.CreateThread(function()
-  while isLoading do Citizen.Wait(10) end
-  while Config.debug do
-    Citizen.Wait(15000)
-    printDebug('gps = {x='.. coords.x ..', y='.. coords.y ..', z='.. coords.z ..'}')
-  end
-end)
+--Citizen.CreateThread(function()
+  --while isLoading do Citizen.Wait(10) end
+  --while Config.debug do
+    --Citizen.Wait(15000)
+    --printDebug('gps = {x='.. coords.x ..', y='.. coords.y ..', z='.. coords.z ..'}')
+  --end
+--end)
 
-RegisterNetEvent("Brook:menubrinks")
-AddEventHandler("Brook:menubrinks", function()
+RegisterNetEvent('Brook:brinksmenu')
+AddEventHandler('Brook:brinksmenu', function()
   openMobileBrinksMenu()
 end)

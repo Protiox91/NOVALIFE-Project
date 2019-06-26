@@ -21,7 +21,7 @@ local isDead					= false
 Citizen.CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+		Citizen.Wait(10)
 	end
 end)
 
@@ -189,7 +189,7 @@ end)
 -- Display markers
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Citizen.Wait(5)
 		local coords = GetEntityCoords(PlayerPedId())
 		for k,v in pairs(Config.Zones) do
 			for i = 1, #v.Pos, 1 do
@@ -204,7 +204,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(200)
+		Citizen.Wait(300)
 
 		local coords      = GetEntityCoords(PlayerPedId())
 		local isInMarker  = false
@@ -235,7 +235,7 @@ end)
 -- Key controls
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		Citizen.Wait(7)
 		
 		if CurrentAction ~= nil then
 			ESX.ShowHelpNotification(CurrentActionMsg)
@@ -245,7 +245,7 @@ Citizen.CreateThread(function()
 				CurrentAction = nil
 			end
 		elseif CurrentAction == nil and not Config.EnableControls then
-			Citizen.Wait(500)
+			Citizen.Wait(800)
 		end
 	end
 end)

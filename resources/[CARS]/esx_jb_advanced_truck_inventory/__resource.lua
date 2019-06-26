@@ -15,3 +15,7 @@ client_scripts {
   'config/config.lua',
   'client/main.lua'
 }
+
+exports {
+  'openmenuvehicle'
+}

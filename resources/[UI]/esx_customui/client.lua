@@ -17,7 +17,7 @@ local inVehicle = false
 Citizen.CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(10)
+		Citizen.Wait(100)
 	end
 	TriggerEvent('es:setMoneyDisplay', 0.0)
 	ESX.UI.HUD.SetDisplay(0.0)
@@ -57,7 +57,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		Citizen.Wait(20)
 		TriggerEvent('es:setMoneyDisplay', 0.0)
 		ESX.UI.HUD.SetDisplay(0.0)
 		if isTalking == false then

@@ -248,7 +248,7 @@ function MenuPrincipal(menu)
             elseif PlayerData.job and PlayerData.job.name == 'brinks' then
                 mainMenu:Visible(not mainMenu:Visible()) 
                 Wait(75)   
-                TriggerEvent("Brook:menubrinks")
+                TriggerEvent('Brook:brinksmenu')
             elseif PlayerData.job and PlayerData.job.name == 'charbon' or PlayerData.job.name == 'fisherman' or PlayerData.job.name == 'fueler' or PlayerData.job.name == 'garbage' or PlayerData.job.name == 'lumberjack' or PlayerData.job.name == 'miner' or PlayerData.job.name == 'poolcleaner' or PlayerData.job.name == 'salvage' or PlayerData.job.name == 'slaughterer' or PlayerData.job.name == 'tailor' or PlayerData.job.name == 'tailor' then
                 advancednotify("CHAR_LIFEINVADER", 1, "NovaLife RP", false, "~r~Tu n'est qu'un intérimaire !")
             end
@@ -274,6 +274,8 @@ function configmenu(menu)
     local c7 = NativeUI.CreateItem("N°3", "Changer de compteur")  
     local c8 = NativeUI.CreateItem("RETOUR","Retourner au menu principal")
     local c9 = NativeUI.CreateItem("Mode Cinématique", "Mettre Mode Cinématique") 
+    local c11 = NativeUI.CreateItem("Report", "Report un comportement HRP ou autre aux Admins") 
+    local c10 = NativeUI.CreateItem("--- AUTRES ---", "Mettre Mode Cinématique") 
     menu.OnItemSelect = function(sender, item, index)
         if item == c2 then
             advancednotify("CHAR_LIFEINVADER", 1, "NovaLife RP", false, "~g~Le HUD est ouvert !")
@@ -304,8 +306,11 @@ function configmenu(menu)
 			else
 				SendNUIMessage({openCinema = false})
                 exports.esx_customui:toggle(true)  
-				DisplayRadar(true)
+                DisplayRadar(true)
             end
+        elseif item == c11 then
+            confMenu:Visible(not confMenu:Visible())
+            TriggerEvent('Brook:Display')
         end
     end
     menu:AddItem(c1)
@@ -317,6 +322,8 @@ function configmenu(menu)
     menu:AddItem(c6)
     menu:AddItem(c7)
     menu:AddItem(c8)
+    menu:AddItem(c10)
+    menu:AddItem(c11)
 end
 
 function credit(menu)

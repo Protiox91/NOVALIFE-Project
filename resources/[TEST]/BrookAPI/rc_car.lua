@@ -7,7 +7,6 @@ function RCCarStart()
 
 	RCCar.Tablet(true)
 	exports.esx_customui:toggle(false)
-    exports.BrookAPI:close()  
     DisplayRadar(false)
 
 	while DoesEntityExist(RCCar.Entity) and DoesEntityExist(RCCar.Driver) do

@@ -1,4 +1,4 @@
-local limitping = 600
+local limitping = 700
 
 RegisterServerEvent('pingKicker:check')
 AddEventHandler('pingKicker:check', function()

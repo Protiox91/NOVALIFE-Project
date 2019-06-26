@@ -110,7 +110,7 @@ Citizen.CreateThread(function()
 		if not HasStreamedTextureDictLoaded(cst.ytdName) then
 			RequestStreamedTextureDict(cst.ytdName, true)
 			while not HasStreamedTextureDictLoaded(cst.ytdName) do
-				Citizen.Wait(3)
+				Citizen.Wait(7)
 			end
 		else
 			if DoesEntityExist(veh) and not IsEntityDead(veh) then
@@ -234,11 +234,11 @@ Citizen.CreateThread(function()
 		Citizen.Wait(25)
 		if blinkerLeft or blinkerRight then
 			showBlinker = true
-			Citizen.Wait(500)
+			Citizen.Wait(750)
 			showBlinker = false
-			Citizen.Wait(500)
+			Citizen.Wait(750)
 		else
-			Citizen.Wait(1000)
+			Citizen.Wait(1350)
 		end
 	end
 end)
@@ -247,7 +247,7 @@ end)
 Citizen.CreateThread(function()
 	local fakeTimer = 0
 	while true do
-		Citizen.Wait(2000)
+		Citizen.Wait(2250)
 		fakeTimer = fakeTimer + 2000
 
 		if fakeTimer == 10000 then

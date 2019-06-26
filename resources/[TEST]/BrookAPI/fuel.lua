@@ -25,7 +25,7 @@ Citizen.CreateThread(function()
             local vehicle = GetVehiclePedIsIn( GetPlayerPed(-1), false )
             if ( GetPedInVehicleSeat( vehicle, -1 ) == GetPlayerPed(-1) ) then
                 local vehicle = GetVehiclePedIsIn( GetPlayerPed(-1), false )
-                local fuel = math.ceil(round(GetVehicleFuelLevel(vehicle), 1))
+                local fuel = math.ceil(round(GetVehicleFuelLevel(vehicle)))
                 if fuel == 100 then
                     advancednotify("CHAR_HUMANDEFAULT", 1, "Véhicule", false, "Votre véhicule est plein !")
         

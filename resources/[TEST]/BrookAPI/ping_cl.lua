@@ -1,7 +1,7 @@
 local strikes = 0
 local playerPing = 0
 local strikesmax = 3
-local limitping = 600
+local limitping = 700
 
 RegisterNetEvent('pingKicker:return')
 AddEventHandler('pingKicker:return', function(ping)
@@ -12,7 +12,7 @@ Citizen.CreateThread(function()
 	while true do
 		TriggerServerEvent('pingKicker:check')
 		
-		Wait(750)
+		Wait(5000)
 
 		if playerPing >= limitping then
 			strikes = strikes + 1

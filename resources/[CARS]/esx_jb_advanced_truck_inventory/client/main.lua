@@ -83,7 +83,7 @@ end
 function openmenuvehicle()
 	local playerPed = GetPlayerPed(-1)
 	local coords    = GetEntityCoords(playerPed)
-	local vehicle   =VehicleInFront()
+	local vehicle   = VehicleInFront()
 	globalplate  = GetVehicleNumberPlateText(vehicle)
 	if globalplate ~= nil or globalplate ~= "" or globalplate ~= " " then
 		ESX.TriggerServerCallback('esx_truck:checkvehicle',function(valid)
@@ -128,11 +128,9 @@ function openmenuvehicle()
 end
 local count = 0
 -- Key controls
-Citizen.CreateThread(function()
-  while true do
-
-    Wait(0)
-    if IsControlPressed(0, Keys["F7"]) and (GetGameTimer() - GUI.Time) > 1000 then --["L"] = 182,
+RegisterNetEvent('Brook:opentrunk')
+AddEventHandler('Brook:opentrunk',function() 
+    if (GetGameTimer() - GUI.Time) > 1000 then --["L"] = 182,
 		if count == 0 then
 			openmenuvehicle()
 			count = count +1
@@ -141,17 +139,16 @@ Citizen.CreateThread(function()
 			count = 0
 		end
     elseif lastOpen and IsControlPressed(0, Keys["BACKSPACE"]) and (GetGameTimer() - GUI.Time) > 150 then
-	  CloseToVehicle = false
-      lastOpen = false
-      if lastVehicle > 0 then
-      	SetVehicleDoorShut(lastVehicle, 5, false)
-		local lastvehicleplatetext = GetVehicleNumberPlateText(lastVehicle)
-		TriggerServerEvent('esx_truck_inventory:RemoveVehicleList', lastvehicleplatetext)
-      	lastVehicle = 0
-      end
-      GUI.Time  = GetGameTimer()
+	  	CloseToVehicle = false
+      	lastOpen = false
+      	if lastVehicle > 0 then
+      		SetVehicleDoorShut(lastVehicle, 5, false)
+			local lastvehicleplatetext = GetVehicleNumberPlateText(lastVehicle)
+			riggerServerEvent('esx_truck_inventory:RemoveVehicleList', lastvehicleplatetext)
+      		lastVehicle = 0
+      	end
+      	GUI.Time  = GetGameTimer()
     end
-  end
 end)
 
 -- CloseToVehicle

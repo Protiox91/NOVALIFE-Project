@@ -102,7 +102,7 @@ local atms = {
 Citizen.CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+		Citizen.Wait(100)
 	end
 end)
 
@@ -116,7 +116,7 @@ end)
 if bankMenu then
 	Citizen.CreateThread(function()
 	while true do
-		Wait(0)
+		Wait(10)
 	if nearBank() or nearATM() then
 			DisplayHelpText("Appuie sur ~INPUT_PICKUP~ pour accéder à votre compte. ~b~")
 
@@ -142,6 +142,8 @@ end
 --===============================================
 --==             Map Blips	                   ==
 --===============================================
+
+--[[
 Citizen.CreateThread(function()
 	if showblips then
 	  for k,v in ipairs(banks)do
@@ -156,7 +158,7 @@ Citizen.CreateThread(function()
 		EndTextCommandSetBlipName(blip)
 	  end
 	end
-end)
+end)--]]
 
 -- Citizen.CreateThread(function()
 	-- if showblips then
