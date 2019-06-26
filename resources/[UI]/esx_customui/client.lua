@@ -39,9 +39,9 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 	local accounts = data.accounts
 	for k,v in pairs(accounts) do
 		local account = v
-		if account.name == "bank" then
-			SendNUIMessage({action = "setValue", key = "bankmoney", value = "$"..account.money})
-		elseif account.name == "black_money" then
+		--if account.name == "bank" then
+			--SendNUIMessage({action = "setValue", key = "bankmoney", value = "$"..account.money})
+		if account.name == "black_money" then
 			SendNUIMessage({action = "setValue", key = "dirtymoney", value = "$"..account.money})
 		end
 	end
