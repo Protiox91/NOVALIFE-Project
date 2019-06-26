@@ -1171,7 +1171,7 @@ end
 
 Citizen.CreateThread(function()
 	while true do
-		Wait(0)
+		Wait(5)
 		if inputvehicle == 1 then
 			if UpdateOnscreenKeyboard() == 3 then
 				inputvehicle = 0
@@ -1231,7 +1231,7 @@ end
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(1)
+        Citizen.Wait(5)
 		if showcoord then
 			local playerPos = GetEntityCoords(GetPlayerPed(-1))
 			local playerHeading = GetEntityHeading(GetPlayerPed(-1))
