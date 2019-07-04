@@ -1,32 +1,38 @@
-resource_manifest_version '05cfa83c-a124-4cfa-a768-c24a5811d8f9'
+resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
 
---[[
---All items unpacked
 
 client_scripts {
-    "Utils.lua",
-    "elements/UIResRectangle.lua",
-    "elements/UIResText.lua",
-    "elements/Sprite.lua",
-    "elements/StringMeasurer.lua",
-    "elements/Badge.lua",
-    "elements/Colours.lua",
-    "items/UIMenuItem.lua",
-    "items/UIMenuCheckboxItem.lua",
-    "items/UIMenuListItem.lua",
-    "items/UIMenuSliderItem.lua",
-    "items/UIMenuColouredItem.lua",
-    "items/UIMenuprogressItem.lua",
-    "windows/UIMenuHeritageWindow.lua",
-    "panels/UIMenuGridPanel.lua",
-    "panels/UIMenuColourPanel.lua",
-    "panels/UIMenuPercentagePanel.lua",
-    "UIMenu.lua",
-    "MenuPool.lua",
-    "MenuExample.lua",
+    "Wrapper/Utility.lua",
+    "UIElements/UIVisual.lua",
+    "UIElements/UIResRectangle.lua",
+    "UIElements/UIResText.lua",
+    "UIElements/Sprite.lua",
+    "UIMenu/elements/Badge.lua",
+    "UIMenu/elements/Colours.lua",
+    "UIMenu/elements/ColoursPanel.lua",
+    "UIMenu/elements/StringMeasurer.lua",
+    "UIMenu/items/UIMenuItem.lua",
+    "UIMenu/items/UIMenuCheckboxItem.lua",
+    "UIMenu/items/UIMenuListItem.lua",
+    "UIMenu/items/UIMenuSliderItem.lua",
+    "UIMenu/items/UIMenuSliderHeritageItem.lua",
+    "UIMenu/items/UIMenuColouredItem.lua",
+    "UIMenu/items/UIMenuProgressItem.lua",
+    "UIMenu/items/UIMenuSliderProgressItem.lua",
+    "UIMenu/windows/UIMenuHeritageWindow.lua",
+    "UIMenu/panels/UIMenuGridPanel.lua",
+    "UIMenu/panels/UIMenuHorizontalOneLineGridPanel.lua",
+    "UIMenu/panels/UIMenuVerticalOneLineGridPanel.lua",
+    "UIMenu/panels/UIMenuColourPanel.lua",
+    "UIMenu/panels/UIMenuPercentagePanel.lua",
+    "UIMenu/panels/UIMenuStatisticsPanel.lua",
+    "UIMenu/UIMenu.lua",
+    "UIMenu/MenuPool.lua",
+    "UITimerBar/UITimerBarPool.lua",
+    "UITimerBar/items/UITimerBarItem.lua",
+    "UITimerBar/items/UITimerBarProgressItem.lua",
+    "UITimerBar/items/UITimerBarProgressWithIconItem.lua",
+    "UIProgressBar/UIProgressBarPool.lua",
+    "UIProgressBar/items/UIProgressBarItem.lua",
+    "NativeUI.lua"
 }
-
---All items packed
---]]
-
-client_script "NativeUI.lua"

@@ -268,15 +268,15 @@ function MenuPrincipal(menu)
             mainMenu:Visible(not mainMenu:Visible())
         elseif item == click12 then
             local mode = item:IndexToItem(index)
-            if mode == "Parler"
+            if mode == "Parler" then
                 advancednotify("CHAR_HUMANDEFAULT", 1, "Moi", false, "Tu parle ! (10 M)")
                 NetworkSetTalkerProximity(10.0)
                 TriggerEvent('esx_customui:voice', "normal")
-            elseif mode == "Chuchoter"
+            elseif mode == "Chuchoter" then
                 advancednotify("CHAR_HUMANDEFAULT", 1, "Moi", false, "Tu chuchote ! (2 M)")
                 NetworkSetTalkerProximity(2.0)
                 TriggerEvent('esx_customui:voice', "whisper")
-            elseif mode == "Crier"
+            elseif mode == "Crier" then
                 advancednotify("CHAR_HUMANDEFAULT", 1, "Moi", false, "Tu crie ! (26 M)")
                 NetworkSetTalkerProximity(26.0)
                 TriggerEvent('esx_customui:voice', "shout")
@@ -322,14 +322,14 @@ function MenuPrincipal(menu)
     menu:AddItem(click3)
 end
 
-function infosrp(menu)
-    local jobf = NativeUI.CreateItem("Votre métier :" ..jobname.. " - "..jobgrade "", "Toutes vos infos RP") 
-    local jobf2 = NativeUI.CreateItem("Votre statut :" ..job2name..  " - " ..job2grade "", "Toutes vos infos RP") 
-    local jobf2 = NativeUI.CreateItem("Votre portefeuille :" ..money " $", "Toutes vos infos RP") 
-    menu:AddItem(jobf)
-    menu:AddItem(jobf2)
-    menu:AddItem(jobf3)
-end
+--function infosrp(menu)
+    --local jobf = NativeUI.CreateItem("Votre métier :" ..jobname.. " - "..jobgrade "", "Toutes vos infos RP") 
+    --local jobf2 = NativeUI.CreateItem("Votre statut :" ..job2name..  " - " ..job2grade "", "Toutes vos infos RP") 
+    --local jobf2 = NativeUI.CreateItem("Votre portefeuille :" ..money " $", "Toutes vos infos RP") 
+    --menu:AddItem(jobf)
+    --menu:AddItem(jobf2)
+    --menu:AddItem(jobf3)
+--end
 
 function configmenu(menu)
     local c1 = NativeUI.CreateItem("--- HUD ---", "Configurer votre HUD") 
@@ -1061,7 +1061,7 @@ div(divMenu)
 mod(modMenu)
 Brook(Brookmenu)
 Limit(Limitmenu)
-infosrp(infsmenu)
+--infosrp(infsmenu)
 _menuPool:RefreshIndex()
 
 ---THREADS---
