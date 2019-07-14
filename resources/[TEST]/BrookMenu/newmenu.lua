@@ -44,6 +44,16 @@ local CV = {
     " N°3"
 }
 
+local MV = {
+    " Montrer",
+    " Voir"
+}
+
+local MV2 = {
+    " Montrer",
+    " Voir"
+}
+
 -- Functions ESX --
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
@@ -418,9 +428,67 @@ end
 
 function portefeuille(menu)
 	portefeuillemenu = _menuPool:AddSubMenu(menu, "Portefeuiille")
-	local ident = NetworkGetNetworkIdFromEntity(ped)
-	local ID = NativeUI.CreateItem("Mon ID : "..ident.."", " ")
-	portefeuillemenu.SubMenu:AddItem(ID)
+	local plyPed = PlayerPedId()
+	for id = 0, 32 do
+		if NetworkIsPlayerActive(id) and GetPlayerPed(id) ~= plyPed then
+			local ident = GetPlayerServerId(id)
+			local ID = NativeUI.CreateItem("Mon ID : "..ident.."", " ")
+			portefeuillemenu.SubMenu:AddItem(ID)
+		end
+	end
+	
+	local idtt = NativeUI.CreateListItem("Carte d'identitée", MV, 1)
+	local pm = NativeUI.CreateListItem("Permis", MV2, 1)
+	portefeuillemenu.SubMenu.OnListChange = function(sender, item, index)
+        if item == idtt then
+			local mode = item:IndexToItem(index)
+			if mode == " Montrer" then
+				hasID(function (hasID)
+					if hasID == true then
+						local player, distance = ESX.Game.GetClosestPlayer()
+						if distance ~= -1 and distance <= 3.0 then
+							TriggerServerEvent('jsfour-idcard:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(player))
+						end
+					else 
+						advancednotify("CHAR_LIFEINVADER", 1, "Mairie", false, "Vous n'avez pas de carte d'identitée !")
+					end
+				end)
+			elseif mode == " Voir" then
+				hasID(function (hasID)
+					if hasID == true then
+						TriggerServerEvent('jsfour-idcard:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(PlayerId()))
+					else
+						advancednotify("CHAR_LIFEINVADER", 1, "Mairie", false, "Vous n'avez pas de carte d'identitée !")
+					end
+				end)
+			end           
+		end
+		if item == pm then
+			local mode2 = item:IndexToItem(index)
+			if mode2 == " Montrer" then
+				hasPC(function (hasPC)
+					if hasPC == true then
+						local player, distance = ESX.Game.GetClosestPlayer()
+						if distance ~= -1 and distance <= 3.0 then
+							TriggerServerEvent('jsfour-idcard:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(player), 'driver')
+						end
+					else
+						advancednotify("CHAR_LIFEINVADER", 1, "Mairie", false, "Vous n'avez pas de permis !")
+					end
+				end)
+			elseif mode2 == " Voir" then
+				hasPC(function (hasPC)
+					if hasPC == true then
+						TriggerServerEvent('jsfour-idcard:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(PlayerId()), 'driver')
+					else
+						advancednotify("CHAR_LIFEINVADER", 1, "Mairie", false, "Vous n'avez pas de permis !")
+					end
+				end)
+			end            
+        end
+    end	
+	portefeuillemenu.SubMenu:AddItem(idtt)
+	portefeuillemenu.SubMenu:AddItem(pm)
 end
 
 function AddMenuInventoryMenu(menu)
@@ -571,7 +639,6 @@ function config(menu)
             end
         end
 	end
-	
 	confMenu.SubMenu.OnItemSelect = function(sender, item, index)
 		if item == c14 then
 			TriggerEvent('Brook:Display')
@@ -1202,7 +1269,7 @@ function AddMenuBossMenu2(menu)
 	end
 end
 
-MenuPrincipal(mainMenu)
+--MenuPrincipal(mainMenu)
 
 -- THREADS
 
