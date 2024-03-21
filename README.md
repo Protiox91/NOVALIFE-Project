@@ -20,18 +20,14 @@ Pour utiliser les ressources de ce serveur sur votre propre installation FiveM, 
 1. Clonez ce dépôt sur votre machine locale.
 2. Copiez les ressources nécessaires dans le dossier resources de votre installation FiveM.
 3. Importez les configurations appropriées dans votre serveur FiveM.
-4. Lancez votre serveur FiveM et profitez des fonctionnalités de NovalifeRP Project !
+4. Lancez votre serveur FiveM et profitez des fonctionnalités inédites
 
 ## Avertissement
 
-Ce dépôt est fourni à titre informatif et à des fins éducatives. Les ressources et les scripts contenus dans ce dépôt étaient utilisés spécifiquement pour le serveur NovalifeRP Project et peuvent nécessiter des modifications pour être compatibles avec d'autres installations FiveM.
+Ce dépôt est fourni à titre informatif et à des fins éducatives. Les ressources et les scripts contenus dans ce dépôt étaient utilisés spécifiquement pour le serveur NovalifeRP Project et peuvent nécessiter des modifications pour être compatibles avec d'autres installations FiveM. Le serveur étant discontinué depuis 2021, la plupart des scripts risquent de ne plus fonctionner, cette repo est à titre de recherche uniquement, le code utilisé peut être réutilisé sous condition de citer le propriétaire et que votre code sois rendu publique.
 
 ## Contribuer
 
 Les contributions sont les bienvenues ! Si vous souhaitez contribuer à ce projet en proposant des améliorations, des corrections de bugs ou de nouvelles fonctionnalités, veuillez soumettre une demande de tirage (pull request).
-
-## Contact
-
-Pour toute question ou commentaire, n'hésitez pas à nous contacter à l'adresse suivante : [contact@novaliferp.com](mailto:contact@novaliferp.com).
 
 Nous vous remercions de votre intérêt pour NovalifeRP Project !
